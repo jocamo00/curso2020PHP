@@ -1,65 +1,43 @@
-<?php
+<?php 
+require_once "./lib/arraysDatos.php";
+?>
+<?php 
+require_once "./template/head.php";
+?>
 
-        $carta = [];
-
-        $plato1 = [
-                           "titulo" => "Paella Valenciana",
-                    "numComensales" => 5,
-                             "tipo" => "primero",
-                     "ingredientes" => [
-                                           "nombre" => "Arroz",
-                                         "cantidad" => "500g"
-                                       ]  
-                  ];
-
-        $plato2 = [
-                           "titulo" => "Pollo Asado",
-                    "numComensales" => 6,
-                             "tipo" => "segundo",
-                     "ingredientes" => [
-                                           "nombre" => "Pollo",
-                                         "cantidad" => 2
-                                       ]
-                  ];
-
-        $plato3 = [
-                           "titulo" => "Ensaladilla Rusa",
-                    "numComensales" => 6,
-                             "tipo" => "entrante",
-                     "ingredientes" => [
-                                           "nombre" => "Patata",
-                                         "cantidad" => "600g"
-                                       ]
-                  ];
-
-        $carta[] = $plato1; 
-        $carta[] = $plato2; 
-        $carta[] = $plato3; 
-    
-        ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reto Batman</title>
-</head>
 <body>
 
-    <?php
-        foreach ($carta as $key => $value) {
-            foreach ($value as $key2 => $value2) {
-                if($key2==="ingredientes"){
-                    foreach ($value2 as $key3 => $value3) {
-                        echo "$value3<br>";
-                    }
-                }
-                error_reporting(0);
-                echo "$value2<br>";
-            }
+  <div class="container">
+    <div class="row">
+      <?php
+          foreach ($carta as $value) { 
+          echo "<div class='col s4 l4'>";
+          foreach ($value as $key => $value2) {
+              if($key === 'Titulo'){
+                  echo "<div><h5>$value2</h5>";
+              }
+              if($key === 'Comensales'){
+                  echo "<p>$key:  <span>$value2</span></p>";
+              }
+              if($key === 'Tipo'){
+                  echo "<p>$key:  <span>$value2</span></p></div>";
+              }
+              if($key === 'Ingredientes'){
+                  foreach ($value2 as $key => $value3) {
+                      echo "<div><p>$key </p><span>$value3</span></div>";
+                  }
+              }
+          }
+
+          echo "</div>";
         }
-    ?>
-    
+      ?>
+    </div>
+  </div>
+
+<?php 
+require_once "./template/footer.php";
+?>
 </body>
 </html>
 
