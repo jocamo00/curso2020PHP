@@ -1,7 +1,8 @@
 <?php
 require_once "./lib/db_conexion.php";
 $conn=conexion();
-$plato=getPlato($conn,$_GET["id"]);
+$ingredientes=getPlatosConIngredientes($conn,$_GET["id"]);
+$plato=getPlatosIdConTipoPlato($conn,$_GET["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +15,33 @@ $plato=getPlato($conn,$_GET["id"]);
 </head>
 <body>
     <?php include "./template/head.php"?>
-    <div class="container">
-        <h1><?=$plato["titulo"]?></h1>
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">;
+            <div class="card-content white-text">
+                <span class="card-title center-align"><?=$plato["titulo"]?></span>
+            </div>
+            <div class="card-action white-text center-align">
+                <span class="card-title">Tipo:</span>
+                <span class="card-title"><?=$plato["nombre"]?></span>
+            </div>
+            <div class="card-action white-text center-align">
+                <span class="card-title">Comensales:</span>
+                <span class="card-title"><?=$plato["comensales"]?></span>
+            </div>
+            <div class="card-action white-text center-align">
+                <span class="card-title">Ingredientes:</span>
+            </div>
+            <?php
+                foreach ($ingredientes as $ingrediente){
+                    ?>
+            <div class="card-action white-text center-align">
+                <span class="card-title"><?=$ingrediente["nombre"]?></span>
+            </div>
+            <?php
+                } 
+            ?>
+        </div>
     </div>
-    
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>

@@ -1,0 +1,12 @@
+curso
+    titulo
+    fecha inicio
+    fecha fin
+    grupos
+grupo
+    numero
+    alumnos
+alumno
+    nombre
+    apellidos
+    email

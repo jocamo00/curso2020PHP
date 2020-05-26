@@ -4,11 +4,15 @@ require_once "./lib/arraysDatos.php";
 <?php 
 require_once "./template/head.php";
 ?>
+<?php 
+    require_once "./db_conexion.php";
+?>
 
 <body>
 
   <div class="container">
     <div class="row">
+
       <?php
           foreach ($carta as $value) { 
           echo "<div class='col s4 l4'>";
@@ -38,6 +42,7 @@ require_once "./template/head.php";
 <?php 
 require_once "./template/footer.php";
 ?>
+
 </body>
 </html>
 
